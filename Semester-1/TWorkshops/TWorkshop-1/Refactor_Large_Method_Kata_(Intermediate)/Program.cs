@@ -1,4 +1,4 @@
-﻿namespace RefactorLargeMethodKataIntermediate
+﻿    namespace RefactorLargeMethodKataIntermediate
 {
     class Program
     {
