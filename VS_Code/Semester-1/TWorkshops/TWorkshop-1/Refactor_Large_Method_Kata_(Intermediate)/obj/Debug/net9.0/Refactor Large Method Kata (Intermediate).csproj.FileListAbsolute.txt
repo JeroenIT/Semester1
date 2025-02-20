@@ -1,0 +1,14 @@
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\bin\Debug\net9.0\Refactor Large Method Kata (Intermediate).exe
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\bin\Debug\net9.0\Refactor Large Method Kata (Intermediate).deps.json
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\bin\Debug\net9.0\Refactor Large Method Kata (Intermediate).runtimeconfig.json
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\bin\Debug\net9.0\Refactor Large Method Kata (Intermediate).dll
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\bin\Debug\net9.0\Refactor Large Method Kata (Intermediate).pdb
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\Refactor Large Method Kata (Intermediate).GeneratedMSBuildEditorConfig.editorconfig
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\Refactor Large Method Kata (Intermediate).AssemblyInfoInputs.cache
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\Refactor Large Method Kata (Intermediate).AssemblyInfo.cs
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\Refactor Large Method Kata (Intermediate).csproj.CoreCompileInputs.cache
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\Refactor Large Method Kata (Intermediate).dll
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\refint\Refactor Large Method Kata (Intermediate).dll
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\Refactor Large Method Kata (Intermediate).pdb
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\Refactor Large Method Kata (Intermediate).genruntimeconfig.cache
+D:\School\Leerjaar 1\Semester 1\Test start\Refactor Large Method Kata (Intermediate)\Refactor Large Method Kata (Intermediate)\obj\Debug\net9.0\ref\Refactor Large Method Kata (Intermediate).dll
