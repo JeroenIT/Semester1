@@ -25,7 +25,7 @@ int scoreTrown;
 
 bool lightDoubleOn = false;
 bool lightTripleOn = false;
-
+bool finishAllowed = false;
 
 void switchDoubleLightOn();
 void resetGame();
@@ -34,7 +34,7 @@ void switchTripleLightOn();
 void switchTripleLightOff();
 void trownMultiplier();
 void doubleFinishCheck();
-void scoreInput3();
+void scoreInput(int score);
 void calculateAndDisplayStatistics();
 
 void setup()
@@ -90,8 +90,8 @@ void loop()
   {
 
     Serial.println("button 11 pressed");
-    scoreInput3();
-    }
+    scoreInput(3);
+  }
 
 
   if (lastResetButtonState == LOW && currentResetButtonState == HIGH)
@@ -165,44 +165,54 @@ void switchTripleLightOff()
   delay(100);
 }
 
-void trownMultiplier() 
+int trownMultiplier(int score) 
 {
   if (lightDoubleOn)
     {
-      scoreTrown = 2 * scoreTrown;
       switchDoubleLightOff();
+      finishAllowed = true;
+      return 2 * score;
     }
     else if (lightTripleOn)
     {
-      scoreTrown = 3 * scoreTrown;
       switchTripleLightOff();
+      return 3 * score;
+    }
+    else
+    {
+      return score;
     }
 }
 
 void doubleFinishCheck()
 {
-  if (ledDouble == HIGH && scoreRemaining == 0)
+  if (finishAllowed == true && scoreRemaining-scoreTrown == 0)
   {
     Serial.println("Congratulations! You have won the game!");
     resetGame();
   }
-  else if (scoreRemaining < 6)
+
+  else if (scoreRemaining-scoreTrown < 6)
   {
     Serial.println("Bust! You have to end with a double");
-    scoreRemaining += scoreTrown;
+    Serial.println(scoreRemaining);
   }
+
+  else
+  {
+    scoreRemaining -= scoreTrown;
+    Serial.println(scoreRemaining);
+  }
+  finishAllowed = false;
+  scoreTrown = 0;
 }
 
-void scoreInput3()
+void scoreInput(int score)
 {
-scoreTrown = scoreTrown + score3;
-trownMultiplier();
-scoreRemaining -= scoreTrown;
-doubleFinishCheck();
-Serial.println(scoreRemaining);
-scoreTrown = 0;
 timesTrown++;
-delay(500);
+scoreTrown = trownMultiplier(score);
+doubleFinishCheck();
+delay(100);
 }
 
 void calculateAndDisplayStatistics()
@@ -210,6 +220,7 @@ void calculateAndDisplayStatistics()
   if (timesTrown == 0)
   {
     Serial.println("Game was already ready...");
+    Serial.println(scoreRemaining);
   }
 
   else{
