@@ -6,15 +6,19 @@ const int buttonScore3 = 11;
 const int buttonReset = 10;
 const int ledTriple = 9;
 const int buttonTriple = 8;
+const int buttonScore18 = 7;
 
 int currentResetButtonState;
 int currentScore3ButtonState;
 int currentDoubleButtonState;
 int currentTripleButtonState;
+int currentScore18ButtonState;
 int lastResetButtonState;
 int lastScore3ButtonState;
 int lastDoubleButtonState;
 int lastTripleButtonState;
+int lastScore18ButtonState;
+
 int scoreTotalTrown;
 int scoreAverage;
 int timesTrown = 0;
@@ -27,6 +31,7 @@ bool lightDoubleOn = false;
 bool lightTripleOn = false;
 bool finishAllowed = false;
 
+
 void switchDoubleLightOn();
 void resetGame();
 void switchDoubleLightOff();
@@ -36,6 +41,7 @@ void trownMultiplier();
 void doubleFinishCheck();
 void scoreInput(int score);
 void calculateAndDisplayStatistics();
+void displayScore();
 
 void setup()
 {
@@ -46,10 +52,11 @@ void setup()
   pinMode(buttonDouble, INPUT);
   pinMode(buttonScore3, INPUT);
   pinMode(buttonReset, INPUT);
+  pinMode(buttonScore18, INPUT);
 
   Serial.println("Let's play Darts!");
   scoreRemaining = startScore;
-  Serial.println(scoreRemaining);
+  displayScore();
 }
 
 void loop()
@@ -58,8 +65,16 @@ void loop()
   currentTripleButtonState = digitalRead(buttonTriple);
   currentResetButtonState = digitalRead(buttonReset);
   currentScore3ButtonState = digitalRead(buttonScore3);
+  currentScore18ButtonState = digitalRead(buttonScore18);
   
  // if button is pressed keep track and change LED on/off
+  if (lastScore18ButtonState == LOW && currentScore18ButtonState == HIGH)
+  {
+    Serial.println("button 7 pressed");
+    scoreInput(18);
+  }
+  
+
   if (lastDoubleButtonState == LOW && currentDoubleButtonState == HIGH)
   {
     if (!lightDoubleOn)
@@ -104,12 +119,13 @@ void loop()
  lastTripleButtonState = currentTripleButtonState;
  lastResetButtonState = currentResetButtonState;
  lastScore3ButtonState = currentScore3ButtonState;
+ lastScore18ButtonState = currentScore18ButtonState;
 }
 
 // volgende stap project: display regelen
 // display kan via windows forms met behulp van C#
 // display kan ook via python met pigame
-// volgende stap code: 3x input = 1worp
+
 
 void switchDoubleLightOn()
 {
@@ -124,6 +140,9 @@ void switchDoubleLightOn()
 void resetGame()
 {
   calculateAndDisplayStatistics();
+  digitalWrite(9, LOW);
+  bool lightTripleOn = false;
+  bool lightDoubleOn = false;
   digitalWrite(13, HIGH);
   delay(500);
   digitalWrite(13, LOW);
@@ -134,7 +153,7 @@ void resetGame()
   scoreRemaining = startScore;
   timesTrown = 0;
   Serial.println("Game has been reset");
-  Serial.println(scoreRemaining);
+  displayScore();
   delay(500);
 }
 
@@ -184,6 +203,12 @@ int trownMultiplier(int score)
     }
 }
 
+void displayScore()
+{
+  Serial.println("Score remaining:");
+  Serial.println(scoreRemaining);
+}
+
 void doubleFinishCheck()
 {
   if (finishAllowed == true && scoreRemaining-scoreTrown == 0)
@@ -195,13 +220,13 @@ void doubleFinishCheck()
   else if (scoreRemaining-scoreTrown < 6)
   {
     Serial.println("Bust! You have to end with a double");
-    Serial.println(scoreRemaining);
+    displayScore();
   }
 
   else
   {
     scoreRemaining -= scoreTrown;
-    Serial.println(scoreRemaining);
+    displayScore();
   }
   finishAllowed = false;
   scoreTrown = 0;
@@ -220,7 +245,7 @@ void calculateAndDisplayStatistics()
   if (timesTrown == 0)
   {
     Serial.println("Game was already ready...");
-    Serial.println(scoreRemaining);
+    displayScore();
   }
 
   else{
